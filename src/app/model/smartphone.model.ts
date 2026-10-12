@@ -1,7 +1,10 @@
+import { Stockage } from "./stockage";
+
 export class Smartphone {
-    idSmartphone?: number;
-    marque: string = '';
-    modele: string = '';
-    prix: number = 0;
-    dateSortie: Date = new Date();
+    idSmartphone!: number;
+    marque!: string ;
+    modele!: string ;
+    prix!: number ;
+    dateSortie!: Date ;
+    stockage!: Stockage;
 }

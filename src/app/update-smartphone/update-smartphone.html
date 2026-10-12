@@ -5,7 +5,8 @@
   <form>
     <div class="col-sm-2 col-md-2 col-lg-2">
       <label>ID Smartphone</label>
-      <input readonly type="number" [(ngModel)]="currentSmartphone.idSmartphone" name="idSmartphone" class="form-control">
+      <input readonly type="number" [(ngModel)]="currentSmartphone.idSmartphone" name="idSmartphone"
+        class="form-control">
     </div>
     <div class="col-sm-4 col-md-4 col-lg-4">
       <label>Marque</label>
@@ -23,6 +24,14 @@
       <label>Date de sortie</label>
       <input type="date" [ngModel]="currentSmartphone.dateSortie | date: 'yyyy-MM-dd'"
         (ngModelChange)="setDateSortie($event, currentSmartphone)" name="dateSortie" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Stockage</label>
+      <select class="form-control form-control-lg" id="idStock" name="idStock" [(ngModel)]="updatedStockId">
+        @for(stock of stockages; track stock.idStock){
+        <option [value]="stock.idStock"> {{stock.capaciteStock}} </option>
+        }
+      </select>
     </div>
     <div class="mt-2">
       <button type="submit" (click)="updateSmartphone()" class="btn btn-success">Modifier</button>

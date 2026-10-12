@@ -11,6 +11,7 @@
             <th>Modèle</th>
             <th>Prix</th>
             <th>Date de sortie</th>
+            <th>Stockage</th>
           </tr>
         </thead>
         }
@@ -23,6 +24,7 @@
             <td>{{ smartphone.modele }}</td>
             <td>{{ smartphone.prix }}</td>
             <td>{{ smartphone.dateSortie | date:'dd/MM/yyyy' }}</td>
+            <td>{{smartphone.stockage?.capaciteStock}}</td>
             <td><a class="btn btn-danger" (click)="supprimerSmartphone(smartphone)">Supprimer</a></td>
             <td><a class="btn btn-success" [routerLink]="['/updateSmartphone', smartphone.idSmartphone]">Modifier</a></td>
           </tr>

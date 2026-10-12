@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Smartphone } from '../model/smartphone.model';
 import { SmartphoneService } from '../services/smartphone';
+import { Stockage } from '../model/stockage';
 
 @Component({
   imports: [FormsModule, CommonModule],
@@ -13,17 +14,19 @@ import { SmartphoneService } from '../services/smartphone';
 })
 export class UpdateSmartphone implements OnInit {
   currentSmartphone = new Smartphone();
+  stockages!: Stockage[];
+  updatedStockId!: number;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private smartphoneService: SmartphoneService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    console.log(this.activatedRoute.snapshot.params['id']);
+    this.stockages = this.smartphoneService.listeCategories();
     this.currentSmartphone = this.smartphoneService.consulterSmartphone(this.activatedRoute.snapshot.params['id']);
-    console.log(this.currentSmartphone);
+    this.updatedStockId = this.currentSmartphone.stockage.idStock ;
   }
 
   setDateSortie(value: string, smartphone: Smartphone): void {
@@ -31,6 +34,7 @@ export class UpdateSmartphone implements OnInit {
   }
 
   updateSmartphone() {
+    this.currentSmartphone.stockage = this.smartphoneService.consulterCategorie(this.updatedStockId);
     this.smartphoneService.updateSmartphone(this.currentSmartphone);
     this.router.navigate(['smartphones']);
   }

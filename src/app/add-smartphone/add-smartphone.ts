@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Smartphone } from '../model/smartphone.model';
 import { SmartphoneService } from '../services/smartphone';
+import { Stockage } from '../model/stockage';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [CommonModule, FormsModule],
@@ -11,19 +13,27 @@ import { SmartphoneService } from '../services/smartphone';
 })
 export class AddSmartphone implements OnInit {
   newSmartphone = new Smartphone();
-  message!: string;
+  stockages!: Stockage[];
+  newIdStock!: number;
+  newStockage!: Stockage;
 
-  constructor(private smartphoneService: SmartphoneService) {}
+  constructor(
+    private smartphoneService: SmartphoneService,
+    private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.stockages = this.smartphoneService.listeStockages();
+  }
 
   setDateSortie(value: string, smartphone: Smartphone): void {
     smartphone.dateSortie = value ? new Date(value) : new Date();
   }
 
   addSmartphone() {
-    console.log(this.newSmartphone);
+    // console.log(this.newSmartphone);
+    this.newStockage = this.smartphoneService.consulterCategorie(this.newIdStock);
+    this.newSmartphone.stockage = this.newStockage;
     this.smartphoneService.ajouterSmartphone(this.newSmartphone);
-    this.message = 'Smartphone ' + this.newSmartphone.modele + ' ajouté avec succès !';
+    this.router.navigate(['smarthpones']);
   }
 }
