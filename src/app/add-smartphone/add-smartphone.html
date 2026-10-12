@@ -1,0 +1,34 @@
+<div class="container">
+  <div>
+    <h2>Ajouter un Smartphone :</h2>
+  </div>
+  <form>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>ID Smartphone</label>
+      <input type="number" [(ngModel)]="newSmartphone.idSmartphone" name="idSmartphone" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Marque</label>
+      <input type="text" [(ngModel)]="newSmartphone.marque" name="marque" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Modèle</label>
+      <input type="text" [(ngModel)]="newSmartphone.modele" name="modele" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Prix</label>
+      <input type="number" [(ngModel)]="newSmartphone.prix" name="prix" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date de sortie</label>
+      <input type="date" [ngModel]="newSmartphone.dateSortie | date: 'yyyy-MM-dd'"
+        (ngModelChange)="setDateSortie($event, newSmartphone)" name="dateSortie" class="form-control">
+    </div>
+    <div class="mt-2">
+      <button type="submit" (click)="addSmartphone()" class="btn btn-success">Ajouter</button>
+      <div>
+        <h3>{{ message }}</h3>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { Produits } from './produits/produits';
-import { AddProduit } from './add-produit/add-produit';
-import { UpdateProduit } from './update-produit/update-produit';
+import { Smartphones } from './smartphones/smartphones';
+import { AddSmartphone } from './add-smartphone/add-smartphone';
+import { UpdateSmartphone } from './update-smartphone/update-smartphone';
 
 export const routes: Routes = [
-    { path: "produits", component: Produits },
-    { path: "add-produit", component: AddProduit },
-    { path: "updateProduit/:id", component: UpdateProduit },
-    { path: "", redirectTo: "produits", pathMatch: "full" }
+  { path: 'smartphones', component: Smartphones },
+  { path: 'add-smartphone', component: AddSmartphone },
+  { path: 'updateSmartphone/:id', component: UpdateSmartphone },
+  { path: '', redirectTo: 'smartphones', pathMatch: 'full' }
 ];

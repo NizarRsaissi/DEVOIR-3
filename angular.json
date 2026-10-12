@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "MesProduits": {
+    "ProjetSmartphone": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -60,10 +60,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "MesProduits:build:production"
+              "buildTarget": "ProjetSmartphone:build:production"
             },
             "development": {
-              "buildTarget": "MesProduits:build:development"
+              "buildTarget": "ProjetSmartphone:build:development"
             }
           },
           "defaultConfiguration": "development"
