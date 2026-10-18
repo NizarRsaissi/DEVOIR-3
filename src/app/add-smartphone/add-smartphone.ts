@@ -31,9 +31,9 @@ export class AddSmartphone implements OnInit {
 
   addSmartphone() {
     // console.log(this.newSmartphone);
-    this.newStockage = this.smartphoneService.consulterCategorie(this.newIdStock);
+    this.newStockage = this.smartphoneService.consulterStockage(this.newIdStock);
     this.newSmartphone.stockage = this.newStockage;
     this.smartphoneService.ajouterSmartphone(this.newSmartphone);
-    this.router.navigate(['smarthpones']);
+    this.router.navigate(['smartphones']);
   }
 }

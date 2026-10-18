@@ -54,10 +54,15 @@ export class SmartphoneService {
       this.smartphones.splice(index, 0, smartphone);
     }
   }
-  listeCategories(): Stockage[] {
+  listeSrockages(): Stockage[] {
     return this.stockages;
   }
-  consulterCategorie(id: number): Stockage {
+  consulterStockage(id: number): Stockage {
     return this.stockages.find(cat => cat.idStock == id)!;
+  }
+  rechercherParStockage(idStock: number | null): Smartphone[] {
+    return idStock === null
+      ? this.smartphones
+      : this.smartphones.filter(smartphone => smartphone.stockage.idStock === idStock);
   }
 }

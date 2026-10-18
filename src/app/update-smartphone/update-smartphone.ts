@@ -24,7 +24,7 @@ export class UpdateSmartphone implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.stockages = this.smartphoneService.listeCategories();
+    this.stockages = this.smartphoneService.listeStockages();
     this.currentSmartphone = this.smartphoneService.consulterSmartphone(this.activatedRoute.snapshot.params['id']);
     this.updatedStockId = this.currentSmartphone.stockage.idStock ;
   }
@@ -34,7 +34,7 @@ export class UpdateSmartphone implements OnInit {
   }
 
   updateSmartphone() {
-    this.currentSmartphone.stockage = this.smartphoneService.consulterCategorie(this.updatedStockId);
+    this.currentSmartphone.stockage = this.smartphoneService.consulterStockage(this.updatedStockId);
     this.smartphoneService.updateSmartphone(this.currentSmartphone);
     this.router.navigate(['smartphones']);
   }

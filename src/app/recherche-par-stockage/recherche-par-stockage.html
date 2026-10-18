@@ -1,0 +1,63 @@
+<div class="container">
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+            <label>Nom Produit en tapant</label>
+            <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control">
+        </div>
+    </form>
+
+    <!-- <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+            <label>Nom Produit en tapant</label>
+            <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+        </div>
+    </form> -->
+    <!-- <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <label>Stockages </label>
+        <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="IdStockage"
+            (change)="onChange()">
+            <option [ngValue]="null">Tous les stockages</option>
+            @for(cat of stockages;track cat.idStock)
+            {
+            <option [ngValue]="cat.idStock"> {{cat.capaciteStock}} </option>
+            }
+        </select>
+    </div> -->
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                @if (smartphones.length != 0) {
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Id</th>
+                        <th>Marque</th>
+                        <th>Modèle</th>
+                        <th>Prix</th>
+                        <th>Date de sortie</th>
+                        <th>Stockage</th>
+                    </tr>
+                </thead>
+                }
+                @for (smartphone of smartphones | searchFilter : searchTerm?.toString() ?? '' ; track smartphone.idSmartphone; let index = $index; let nbr = $count;
+                let first = $first; let last = $last) {
+                <tbody>
+                    <tr>
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ smartphone.idSmartphone }}</td>
+                        <td>{{ smartphone.marque }}</td>
+                        <td>{{ smartphone.modele }}</td>
+                        <td>{{ smartphone.prix }}</td>
+                        <td>{{ smartphone.dateSortie | date:'dd/MM/yyyy' }}</td>
+                        <td>{{smartphone.stockage?.capaciteStock}}</td>
+                        <td><a class="btn btn-danger" (click)="supprimerSmartphone(smartphone)">Supprimer</a></td>
+                        <td><a class="btn btn-success"
+                                [routerLink]="['/updateSmartphone', smartphone.idSmartphone]">Modifier</a></td>
+                    </tr>
+                </tbody>
+                }
+            </table>
+        </div>
+    </div>
+</div>
